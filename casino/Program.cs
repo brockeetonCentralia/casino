@@ -1,4 +1,4 @@
-﻿string art = @"
+﻿string welcomeart = @"
 __        _______ _     ____ ___  __  __ _____   _____ ___  
 \ \      / / ____| |   / ___/ _ \|  \/  | ____| |_   _/ _ \ 
  \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|     | || | | |
@@ -9,13 +9,28 @@ __        _______ _     ____ ___  __  __ _____   _____ ___
   | | |  _  | |___  | |___ / ___ \ ___) | || |\  | |_| |    
   |_| |_| |_|_____|  \____/_/   \_\____/___|_| \_|\___/     ";
 
-Console.WriteLine(art);
+string bigwinnerart = @"
+ ____ ___ ____  __        _____ _   _ _   _ _____ ____  _ 
+| __ )_ _/ ___| \ \      / /_ _| \ | | \ | | ____|  _ \| |
+|  _ \| | |  _   \ \ /\ / / | ||  \| |  \| |  _| | |_) | |
+| |_) | | |_| |   \ V  V /  | || |\  | |\  | |___|  _ <|_|
+|____/___\____|    \_/\_/  |___|_| \_|_| \_|_____|_| \_(_)";
+
+string betsclosedart = @"
+ ____  _____ _____ ____     ____ _     ___  ____  _____ ____  
+| __ )| ____|_   _/ ___|   / ___| |   / _ \/ ___|| ____|  _ \ 
+|  _ \|  _|   | | \___ \  | |   | |  | | | \___ \|  _| | | | |
+| |_) | |___  | |  ___) | | |___| |__| |_| |___) | |___| |_| |
+|____/|_____| |_| |____/   \____|_____\___/|____/|_____|____/ ";
+
+
+Console.WriteLine(welcomeart);
 
 Console.WriteLine("Here's $100 on us");
 int userAmount = 100;
-RandNumGame(userAmount);
+RandNumGame(userAmount, bigwinnerart, betsclosedart);
 
-static void RandNumGame(int userAmount)
+static void RandNumGame(int userAmount, string bigwinnerart, string betsclosedart)
 {
     Console.WriteLine($"Your Money: ${userAmount}");
     
@@ -25,7 +40,7 @@ static void RandNumGame(int userAmount)
     if ( userPick  < 1 || userPick > 25)
     {
         Console.WriteLine("Thats an invalid choice. How about we try again.");
-        RandNumGame(userAmount);
+        RandNumGame(userAmount, bigwinnerart, betsclosedart);
     }    
 
     Console.WriteLine("Choose An Amount to Bet: ");
@@ -34,7 +49,7 @@ static void RandNumGame(int userAmount)
     if (userBet > userAmount || userBet <= 0)
     {
         Console.WriteLine("Thats an invalid bet. How about we try again. ");
-        RandNumGame(userAmount);
+        RandNumGame(userAmount, bigwinnerart, betsclosedart);
     }
 
     Thread.Sleep(1000);
@@ -44,7 +59,7 @@ static void RandNumGame(int userAmount)
 
     Thread.Sleep(1000);
 
-    Console.WriteLine("ALL BETS CLOSED");
+    Console.WriteLine(betsclosedart);
 
     Thread.Sleep(1000);
 
@@ -54,20 +69,21 @@ static void RandNumGame(int userAmount)
 
     Random rand = new Random();
     int theNumber = rand.Next(1, 26);
+    //int theNumber = 1; //forcewin
     Console.WriteLine($"THE NUMBER: {theNumber}");
 
     Thread.Sleep(1000);
 
-    if ( userBet == theNumber )
+    if ( userPick == theNumber )
     {
-        Console.WriteLine("BIG WINNER!!");
-        userAmount = userAmount + (userBet + userBet);
+        Console.WriteLine(bigwinnerart);
+        userAmount += userBet * 2;
         Console.WriteLine($"Your Money: ${userAmount}");
         Console.WriteLine("Play Again? Press 1 || or press any key to quit.");
         string playAgain = Console.ReadLine();
         if ( playAgain == "1")
         {
-            RandNumGame(userAmount);
+            RandNumGame(userAmount, bigwinnerart, betsclosedart);
         }
         else
         {
@@ -82,7 +98,7 @@ static void RandNumGame(int userAmount)
         string playAgain = Console.ReadLine();
         if (playAgain == "1")
         {
-            RandNumGame(userAmount);
+            RandNumGame(userAmount, bigwinnerart, betsclosedart);
         }
         else
         {
