@@ -79,7 +79,7 @@ static void RandNumGame(int userAmount, string bigwinnerart, string betsclosedar
         Console.WriteLine(bigwinnerart);
         userAmount += userBet * 2;
         Console.WriteLine($"Your Money: ${userAmount}");
-        Console.WriteLine("Play Again? Press 1 || or press any key to quit.");
+        Console.WriteLine("Play Again? Press 1 || or press any key to quit and [ENTER].");
         string playAgain = Console.ReadLine();
         if ( playAgain == "1")
         {
@@ -94,7 +94,7 @@ static void RandNumGame(int userAmount, string bigwinnerart, string betsclosedar
     {
         Console.WriteLine("That's Unfortunate.");
         Console.WriteLine($"Your Money: {userAmount}");
-        Console.WriteLine("Play Again? Press 1 || or press any key to quit.");
+        Console.WriteLine("Play Again? Press 1 || or press any key to quit and [ENTER].");
         string playAgain = Console.ReadLine();
         if (playAgain == "1")
         {
