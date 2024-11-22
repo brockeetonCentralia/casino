@@ -29,7 +29,7 @@ Console.WriteLine(welcomeart);
 Console.WriteLine("Here's $100 on us");
 int userAmount = 100;
 RandNumGame(userAmount, bigwinnerart, betsclosedart);
-
+//make it so when userAmount = 0 it ends session or a way to add more money like say you can put the house car neighbors house wifes ring
 static void RandNumGame(int userAmount, string bigwinnerart, string betsclosedart)
 {
     Console.WriteLine($"Your Money: ${userAmount}");
